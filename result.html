@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        h1 {
+            font-weight: bold;
+            margin-top: 50px;
+        }
+        .return-button {
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+        .red {
+            color: red;
+            font-weight: bold;
+        }
+        .green {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Result</h1>
+    <p id="result-text"></p>
+    <button class="return-button" onclick="goToHome()">Return</button>
+
+    <script>
+        function goToHome() {
+            window.location.href = "index.html";
+        }
+
+        // JavaScript code to retrieve result from URL parameter
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const result = urlParams.get('result');
+
+        // Display result with appropriate styling
+        const resultText = document.getElementById("result-text");
+        if (result === "phishing") {
+            resultText.innerText = "The entered email subject line is likely to be a phishing email.";
+            resultText.classList.add("red");
+        } else {
+            resultText.innerText = "The entered email subject line is likely to be a legitimate email.";
+            resultText.classList.add("green");
+        }
+    </script>
+</body>
+</html>
